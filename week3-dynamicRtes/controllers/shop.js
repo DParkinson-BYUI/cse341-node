@@ -19,7 +19,7 @@ exports.getProduct = (req, res, next) => {
       pageTitle: product.title,
       path: '/products'
     });
-  });;
+  });
 };
 
 exports.getIndex = (req, res, next) => {
@@ -30,7 +30,7 @@ exports.getIndex = (req, res, next) => {
       path: '/'
     });
   });
-}
+};
 
 exports.getCart = (req, res, next) => {
   Cart.getCart(cart => {
