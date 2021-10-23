@@ -11,20 +11,20 @@ router.get('/login', authController.getLogin);
 router.get('/signup', authController.getSignup);
 
 router.post(
-    '/login', 
-    [
-        body('email')
-            .isEmail()
-            .withMessage('Please enter a valid email.')
-            .normalizeEmail(),
-        body('password',
+  '/login', 
+  [
+    body('email')
+      .isEmail()
+      .withMessage('Please enter a valid email.')
+      .normalizeEmail(),
+    body('password',
         'Password must be valid.'
         )
-        .isLength({min: 5})
-        .isAlphanumeric()
-        .trim()
-    ],
-    authController.postLogin
+      .isLength({ min: 5 })
+      .isAlphanumeric()
+      .trim()
+  ],
+  authController.postLogin
 );
 
 router.post(
@@ -40,7 +40,9 @@ router.post(
             // return true;
             return User.findOne({ email: value }).then(userDoc => {
               if (userDoc) {
-                return Promise.reject('E-mail address already exists. Please pick a different one.');
+                return Promise.reject(
+                    'E-mail address already exists. Please pick a different one.'
+                );
               }
         })
     })
